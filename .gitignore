@@ -1,0 +1,9 @@
+# هرگز کلید امضا را اینجا کامیت نکن
+*.keystore
+*.jks
+local.properties
+.gradle/
+build/
+*.log
+.DS_Store
+Thumbs.db
