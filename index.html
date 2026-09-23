@@ -8,7 +8,7 @@
 <meta name="keywords" content="دانلود زینگو, زینگو, zingo, دانلود برنامه zingo, دانلود برنامه فیلم و سریال, دانلود اپلیکیشن فیلم, دانلود سریال, zingo apk, zingo download, دانلود مستقیم زینگو">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Zingo">
-<meta name="theme-color" content="#0B0806">
+<meta name="theme-color" content="#FFF9F3">
 <link rel="canonical" href="https://zingo-official.vercel.app/">
 <link rel="alternate" hreflang="fa" href="https://zingo-official.vercel.app/">
 <link rel="alternate" hreflang="en" href="https://zingo-official.vercel.app/#en">
@@ -35,6 +35,7 @@
 <link rel="preload" href="/assets/fonts/Pinar-Bold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" as="image" href="/assets/logo.webp" type="image/webp">
 <link rel="stylesheet" href="/styles.css">
+<script>(function(){try{var t=localStorage.getItem('zingo-theme')||'light';document.documentElement.dataset.theme=t;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#0B0806':'#FFF9F3');}catch(e){document.documentElement.dataset.theme='light';}})();</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zingo — زینگو","alternateName":["Zingo","زینگو","دانلود زینگو","برنامه فیلم و سریال زینگو"],"applicationCategory":"EntertainmentApplication","operatingSystem":"Android","offers":{"@type":"Offer","price":"0","priceCurrency":"IRR"},"softwareVersion":"1.0.7","releaseNotes":"نسخه پایدار 1.0.7 — بهبود پخش و زیرنویس","downloadUrl":"https://zingo-official.vercel.app/downloads/Zingo-v1.0.7.apk","installUrl":"https://zingo-official.vercel.app/","screenshot":["https://zingo-official.vercel.app/assets/screen1.jpg","https://zingo-official.vercel.app/assets/screen2.jpg"],"image":"https://zingo-official.vercel.app/assets/logo.png","description":"زینگو (Zingo) برنامه اندرویدی تماشا و دانلود فیلم و سریال با زیرنویس فارسی، کیفیت‌های متنوع و پشتیبانی از دانلودمنیجر.","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"312"},"author":{"@type":"Organization","name":"Zingo"}}
 </script>
@@ -58,6 +59,10 @@
       <a href="#install">نصب</a>
       <a href="#faq">سؤالات</a>
     </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="تغییر حالت روشن و تیره">
+      <svg class="ic-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3 19 19M19 5l-1.7 1.7M6.7 17.3 5 19"/></svg>
+      <svg class="ic-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.5A8 8 0 0 1 10.5 4 8 8 0 1 0 20 13.5Z"/></svg>
+    </button>
     <a class="btn small primary" href="/downloads/Zingo-v1.0.7.apk" download="Zingo-v1.0.7.apk">دانلود</a>
   </div>
 </header>
@@ -96,7 +101,7 @@
       </div>
     </div>
     <div class="float-card">
-      <picture><source srcset="/assets/logo.webp" type="image/webp"><img src="/assets/logo.png" alt="" width="46" height="46"></picture>
+      <span class="fc-logo"><picture><source srcset="/assets/logo.webp" type="image/webp"><img src="/assets/logo.png" alt="" width="42" height="42"></picture></span>
       <div><strong>Zingo v1.0.7</strong><span>آماده دانلود • تست‌شده</span></div>
       <i class="ok">✓</i>
     </div>
@@ -183,7 +188,7 @@
 <footer>
   <div class="wrap foot">
     <div class="foot-brand">
-      <picture><source srcset="/assets/logo.webp" type="image/webp"><img src="/assets/logo.png" alt="زینگو" width="36" height="36" loading="lazy"></picture>
+      <span class="fc-logo"><picture><source srcset="/assets/logo.webp" type="image/webp"><img src="/assets/logo.png" alt="زینگو" width="34" height="34" loading="lazy"></picture></span>
       <strong>زینگو Zingo</strong>
     </div>
     <p>© 2026 زینگو — صفحه رسمی دانلود. <a href="/sitemap.xml">نقشه سایت</a> • <a href="/downloads/version.json">اطلاعات نسخه</a></p>
