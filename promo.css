@@ -48,6 +48,16 @@ body{margin:0;font-family:'Pinar',Tahoma,sans-serif;background:#FFF3E6;color:#2A
 .flash{position:absolute;inset:10px;border-radius:28px;background:#fff;opacity:0;z-index:2;pointer-events:none}
 .flash.go{animation:flash .35s ease}
 @keyframes flash{0%{opacity:0}30%{opacity:.55}100%{opacity:0}}
+/* پاپ‌آپ انتخاب زبان صوت/زیرنویس */
+.audiopop{position:absolute;left:14px;right:14px;bottom:14px;z-index:4;background:rgba(255,255,255,.98);border-radius:18px;padding:10px 12px;box-shadow:0 14px 34px rgba(0,0,0,.4);opacity:0;transform:translateY(24px);transition:.4s;pointer-events:none}
+.audiopop.show{opacity:1;transform:none}
+.ap-title{margin:0;font-size:11px;font-weight:800;color:#C25A00}
+.ap-sub{margin:5px 0 8px;background:#101010;color:#fff;font-size:12.5px;text-align:center;border-radius:10px;padding:7px 8px;min-height:34px;line-height:1.7}
+.audiopop ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.audiopop li{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;color:#7a6248;background:#FFF3E2;border:1px solid transparent;border-radius:10px;padding:5px 12px}
+.audiopop li i{font-style:normal;width:20px;height:20px;border-radius:50%;background:#ddd;color:#fff;font-size:12px;display:grid;place-items:center;flex-shrink:0}
+.audiopop li.active{background:#fff;border-color:#FF4D1C;color:#2A1708}
+.audiopop li.active i{background:#22c55e}
 /* اندکارت */
 .endcard{position:absolute;inset:0;z-index:15;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:70px 20px 30px;background:linear-gradient(180deg,rgba(255,249,241,.4),rgba(255,238,219,.92));opacity:0;visibility:hidden;transition:opacity .5s}
 .endcard.on{opacity:1;visibility:visible}

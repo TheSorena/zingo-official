@@ -7,13 +7,15 @@ capSub=document.getElementById('capSub'),capBadges=document.getElementById('capB
 caption=document.getElementById('caption'),screenImg=document.getElementById('screenImg'),
 screenBox=screenImg.parentElement,taps=document.getElementById('taps'),
 flash=document.getElementById('flash'),endcard=document.getElementById('endcard'),
-soundBtn=document.getElementById('soundBtn');
+soundBtn=document.getElementById('soundBtn'),audioPop=document.getElementById('audioPop'),
+apSub=document.getElementById('apSub'),apItems=[].slice.call(audioPop.querySelectorAll('li'));
 
 var SEGS=[
  {d:4200,img:'/assets/screen1.jpg',pan:'pan-a',hook:'هنوز دنبال فیلم خوب می‌گردی؟',title:'<span class="hl">زینگو</span> اینجاست!',sub:'برنامه فیلم و سریال اندروید',taps:[{x:16,y:11}]},
  {d:4200,img:'/assets/screen1.jpg',pan:'pan-b',hook:'آرشیو همیشه به‌روز',title:'صدها فیلم و سریال',sub:'سینمایی • سریال • ادامه تماشا',taps:[{x:66,y:56}]},
  {d:4200,img:'/assets/screen2.jpg',pan:'pan-a',hook:'با زیرنویس فارسی',title:'پخش آنلاین روان',sub:'کیفیت دلخواهت رو انتخاب کن',badges:['480','720','x264'],taps:[{x:56,y:37}]},
- {d:4000,img:'/assets/screen2.jpg',pan:'pan-b',hook:'بدون کپی لینک',title:'دانلود پرسرعت',sub:'ارسال مستقیم به دانلودمنیجر',badges:['ADM','1DM','⬇'],taps:[{x:50,y:72}]}
+ {d:4600,img:'/assets/screen2.jpg',pan:'pan-b',hook:'صدا و زیرنویس به زبون خودت',title:'انگلیسی؟ فارسی؟ ژاپنی؟',sub:'ترک صوتی رو با یه لمس عوض کن',badges:['EN','FA','JA'],audioDemo:true,taps:[]},
+ {d:4000,img:'/assets/screen2.jpg',pan:'pan-b',hook:'بدون کپی لینک',title:'دانلود پرسرعت',sub:'ارسال مستقیم به دانلودمنیجر',badges:['ADM','1DM','⬇'],taps:[{x:50,y:60}]}
 ];
 var TOTAL=SEGS.reduce(function(a,s){return a+s.d;},0);
 var runId=0,t0=0;
@@ -46,14 +48,20 @@ function wait(ms,id){return new Promise(function(res){var s=Date.now();(function
 function setCaption(s){capHook.textContent=s.hook;capTitle.innerHTML=s.title;capSub.textContent=s.sub||'';capBadges.innerHTML=(s.badges||[]).map(function(b){return '<b>'+b+'</b>';}).join('');caption.classList.remove('swap');void caption.offsetWidth;caption.classList.add('swap');}
 function setScreen(src,pan){if(screenImg.getAttribute('src')!==src){screenImg.src=src;screenBox.classList.remove('xfade');void screenBox.offsetWidth;screenBox.classList.add('xfade');}screenBox.classList.remove('pan-a','pan-b');void screenBox.offsetWidth;screenBox.classList.add(pan);}
 function tap(x,y){var el=document.createElement('div');el.className='tap';el.style.left=x+'%';el.style.top=y+'%';taps.appendChild(el);flash.classList.remove('go');void flash.offsetWidth;flash.classList.add('go');setTimeout(function(){el.remove();},2200);pop();}
+/* دموی انتخاب زبان: چرخه EN → FA → JA با لمس روی هر گزینه */
+var LANGS=[{sub:'Where are you going?',y:79},{sub:'من که هیچ جا نمیرم',y:87},{sub:'どこにも行かない',y:94}];
+var segToken=0;
+function hideAudio(){audioPop.classList.remove('show');apItems.forEach(function(li){li.classList.remove('active');});}
+function runAudioDemo(id,tk){audioPop.classList.add('show');var k=0;(function step(){if(id!==runId||tk!==segToken)return;var L=LANGS[k%LANGS.length];apItems.forEach(function(li,j){li.classList.toggle('active',j===(k%LANGS.length));});apSub.textContent=L.sub;tap(50,L.y);k++;setTimeout(step,1300);})();}
 function progLoop(){var el=(Date.now()-t0)/TOTAL,acc=0;segs.forEach(function(bar,i){var d=i<SEGS.length?SEGS[i].d:0,f=Math.max(0,Math.min((el*TOTAL-acc)/d,1));bar.style.width=(f*100)+'%';acc+=d;});if(runId) requestAnimationFrame(progLoop);}
 async function run(id){
- endcard.classList.remove('on');t0=Date.now();progLoop();
+ endcard.classList.remove('on');hideAudio();t0=Date.now();progLoop();
  for(var i=0;i<SEGS.length;i++){var s=SEGS[i];setCaption(s);setScreen(s.img,s.pan);whoosh();
+  if(s.audioDemo){runAudioDemo(id,++segToken);}else{hideAudio();}
   (s.taps||[]).forEach(function(tp,k){setTimeout(function(){if(id===runId)tap(tp.x,tp.y);},900+k*1100);});
   setTimeout(function(){if(id===runId)snap();},300);
   if(!await wait(s.d,id))return;}
- endcard.classList.add('on');jingle();
+ hideAudio();endcard.classList.add('on');segs.forEach(function(b){b.style.width='100%';});jingle();
 }
 /* پیش‌لود اسکرین دوم */
 new Image().src='/assets/screen2.jpg';
