@@ -1,0 +1,113 @@
+@font-face{font-family:'Pinar';src:url('/assets/fonts/Pinar-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Pinar';src:url('/assets/fonts/Pinar-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Pinar';src:url('/assets/fonts/Pinar-ExtraBold.ttf') format('truetype');font-weight:800;font-display:swap}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:#0B0806;color:#FFF7ED;font-family:'Pinar',Tahoma,sans-serif;overflow:hidden}
+.stage{position:fixed;inset:0;background:radial-gradient(1000px 600px at 50% 110%,#3a1503 0%,#0B0806 60%) fixed,#0B0806;overflow:hidden}
+/* ===== پرده شروع ===== */
+.intro-veil{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(5,3,1,.72);backdrop-filter:blur(8px);transition:opacity .6s;text-align:center;padding:20px}
+.intro-veil.hide{opacity:0;pointer-events:none}
+.veil-logo{filter:drop-shadow(0 0 34px rgba(255,110,30,.75));animation:hover 3s ease-in-out infinite}
+@keyframes hover{50%{transform:translateY(-10px)}}
+.intro-veil h1{margin:6px 0 0;font-size:44px;font-weight:800}
+.intro-veil h1 span{display:block;font-size:15px;letter-spacing:8px;color:#FFC24B;font-weight:700}
+.intro-veil p{color:#CDBFA9;margin:0 0 12px}
+.play-btn{display:inline-flex;align-items:center;gap:12px;font-family:inherit;font-size:20px;font-weight:800;color:#fff;border:none;cursor:pointer;padding:16px 44px;border-radius:99px;background:linear-gradient(135deg,#FF4D1C,#ff7a1a 60%,#FF9A3D);box-shadow:0 14px 44px rgba(255,77,28,.5);transition:.2s}
+.play-btn:hover{transform:scale(1.05)}
+.veil-link{color:#CDBFA9;font-size:14px;margin-top:14px;text-decoration:none}
+/* ===== HUD ===== */
+.hud{position:absolute;top:0;right:0;left:0;z-index:30;opacity:0;transition:opacity .5s}
+.stage.playing .hud{opacity:1}
+.progress{height:4px;background:rgba(255,255,255,.12)}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#FF4D1C,#FFC24B)}
+.hud-row{display:flex;align-items:center;gap:10px;padding:10px 16px}
+.hud-title{font-size:14px;color:#CDBFA9;margin-inline-start:auto}
+.hud-home,.hud-btn{color:#FFF7ED;text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:7px 14px;font-family:inherit;font-size:14px;cursor:pointer}
+.hud-btn:hover{background:rgba(255,255,255,.16)}
+.fx{position:absolute;inset:0;z-index:5;pointer-events:none}
+/* ===== صحنه‌ها ===== */
+.scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:44px;padding:70px 6vw 40px;opacity:0;visibility:hidden;transition:opacity .7s,visibility .7s}
+.scene.on{opacity:1;visibility:visible}
+.grad{background:linear-gradient(90deg,#ff6a2b,#ffc24b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kicker-line{color:#FFC24B;font-weight:700;font-size:15px;margin:0}
+.kicker-line.center{text-align:center}
+.muted-line{color:#CDBFA9}
+/* صحنه ۱ */
+.s1{flex-direction:column;gap:8px;text-align:center}
+.orb{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,31,.4),transparent 65%);filter:blur(30px);transform:scale(.4);opacity:0}
+.scene.on .orb{animation:orbIn 2.4s ease forwards}
+@keyframes orbIn{to{transform:scale(1.4);opacity:1}}
+.s1-logo{opacity:0;filter:drop-shadow(0 0 44px rgba(255,110,30,.8))}
+.scene.on .s1-logo{animation:logoIn 1.1s cubic-bezier(.2,1.4,.3,1) .2s forwards}
+@keyframes logoIn{from{opacity:0;transform:scale(.3) rotate(-10deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+.kinetic{margin:8px 0 0;font-size:clamp(52px,10vw,96px);font-weight:800;line-height:1.2}
+.kinetic span{display:inline-block;opacity:0;transform:translateY(60px) rotate(8deg)}
+.scene.on .kinetic span{animation:letterIn .6s cubic-bezier(.2,1.5,.3,1) forwards}
+.scene.on .kinetic span:nth-child(1){animation-delay:.7s}.scene.on .kinetic span:nth-child(2){animation-delay:.8s}.scene.on .kinetic span:nth-child(3){animation-delay:.9s}.scene.on .kinetic span:nth-child(4){animation-delay:1s}.scene.on .kinetic span:nth-child(5){animation-delay:1.1s}
+@keyframes letterIn{to{opacity:1;transform:none}}
+.s1-tag{font-size:clamp(17px,3vw,24px);color:#FFE3C2;opacity:0}
+.scene.on .s1-tag{animation:fadeUp .8s ease 1.6s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+/* صحنه ۲ و ۳ */
+.phone{background:#101010;border:1px solid #333;border-radius:30px;padding:9px;box-shadow:0 30px 80px rgba(0,0,0,.65);position:relative;flex-shrink:0}
+.phone img{display:block;border-radius:22px;background:#fff}
+.phone .notch{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:70px;height:17px;background:#101010;border-radius:99px;z-index:2}
+.s2 .phone{transform:translateX(-120px) rotate(-8deg);opacity:0}
+.scene.on.s2 .phone{animation:slideL .9s cubic-bezier(.2,1.2,.3,1) forwards}
+@keyframes slideL{to{opacity:1;transform:translateX(0) rotate(-4deg)}}
+.chips h2{font-size:clamp(26px,4.5vw,44px);margin:4px 0 14px;font-weight:800}
+.chips ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.chips li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 20px;font-size:clamp(15px,2.4vw,19px);font-weight:700;opacity:0;transform:translateX(60px)}
+.scene.on .chips li{animation:chipIn .55s cubic-bezier(.2,1.4,.3,1) forwards}
+.scene.on .chips li:nth-child(1){animation-delay:.9s}.scene.on .chips li:nth-child(2){animation-delay:1.25s}.scene.on .chips li:nth-child(3){animation-delay:1.6s}
+@keyframes chipIn{to{opacity:1;transform:none}}
+.scene.on .chips h2,.scene.on .kicker-line{animation:fadeUp .7s ease .3s both}
+.s3 .phone{transform:translateX(120px) rotate(8deg);opacity:0}
+.scene.on.s3 .phone{animation:slideR .9s cubic-bezier(.2,1.2,.3,1) forwards}
+@keyframes slideR{to{opacity:1;transform:translateX(0) rotate(4deg)}}
+.badges{display:flex;gap:10px;margin:14px 0}
+.badges span{background:linear-gradient(135deg,#FF4D1C,#FF9A3D);font-weight:800;padding:8px 22px;border-radius:99px;opacity:0;transform:scale(.4)}
+.scene.on .badges span{animation:popIn .5s cubic-bezier(.2,1.6,.3,1) forwards}
+.scene.on .badges span:nth-child(1){animation-delay:1s}.scene.on .badges span:nth-child(2){animation-delay:1.2s}.scene.on .badges span:nth-child(3){animation-delay:1.4s}
+@keyframes popIn{to{opacity:1;transform:scale(1)}}
+.dl-demo{position:relative}
+.arrow{position:absolute;top:38%;right:-34px;font-size:44px;color:#FFC24B;animation:drop 1.2s ease-in-out infinite;text-shadow:0 0 24px rgba(255,150,40,.9)}
+@keyframes drop{0%,100%{transform:translateY(-12px);opacity:.6}50%{transform:translateY(12px);opacity:1}}
+/* صحنه ۴ */
+.s4{flex-direction:column}
+.stats{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.stats div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:26px 40px;text-align:center;min-width:170px;opacity:0;transform:translateY(50px) scale(.9)}
+.scene.on .stats div{animation:statIn .6s cubic-bezier(.2,1.4,.3,1) forwards}
+.scene.on .stats div:nth-child(1){animation-delay:.3s}.scene.on .stats div:nth-child(2){animation-delay:.6s}.scene.on .stats div:nth-child(3){animation-delay:.9s}
+@keyframes statIn{to{opacity:1;transform:none}}
+.stats strong{display:block;font-size:38px;font-weight:800;color:#fff}
+.stats span{color:#CDBFA9}
+/* صحنه ۵ */
+.s5{flex-direction:column;gap:10px;text-align:center}
+.s5-logo{opacity:0;filter:drop-shadow(0 0 40px rgba(255,110,30,.8))}
+.scene.on .s5-logo{animation:logoIn .9s cubic-bezier(.2,1.4,.3,1) forwards}
+.s5 h2{font-size:clamp(30px,5.5vw,54px);margin:6px 0;font-weight:800;opacity:0}
+.scene.on.s5 h2{animation:fadeUp .7s ease .4s forwards}
+.s5 .muted-line{margin:0 0 8px;opacity:0}
+.scene.on.s5 .muted-line{animation:fadeUp .7s ease .6s forwards}
+.cta{display:inline-flex;flex-direction:column;align-items:center;gap:2px;font-size:22px;font-weight:800;color:#fff;text-decoration:none;padding:18px 58px;border-radius:22px;background:linear-gradient(135deg,#FF4D1C,#ff7a1a 60%,#FF9A3D);box-shadow:0 16px 50px rgba(255,77,28,.55);opacity:0}
+.scene.on .cta{animation:ctaIn .7s cubic-bezier(.2,1.4,.3,1) .8s forwards,ctaPulse 1.8s ease-in-out 1.8s infinite}
+.cta small{font-size:13px;font-weight:400;opacity:.9}
+@keyframes ctaIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+@keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.end-row{display:flex;gap:12px;margin-top:14px;opacity:0}
+.scene.on .end-row{animation:fadeUp .7s ease 1.2s forwards}
+.ghost-btn{font-family:inherit;color:#FFF7ED;text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:10px 26px;font-size:16px;cursor:pointer}
+.ghost-btn:hover{background:rgba(255,255,255,.16)}
+@media(max-width:760px){
+.scene{flex-direction:column;gap:20px;padding:90px 20px 30px;overflow-y:auto}
+.s2 .phone,.s3 .phone{width:150px}.phone img{width:100%;height:auto}
+.chips h2{font-size:26px}.chips{text-align:center}.chips ul{justify-items:center}
+.badges{justify-content:center}
+.arrow{display:none}
+.stats div{min-width:44vw;padding:16px}
+.stats strong{font-size:28px}
+.cta{font-size:19px;padding:16px 34px}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
