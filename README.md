@@ -3,7 +3,7 @@
 صفحه رسمی دانلود برنامه **زینگو (Zingo)** — برنامه فیلم و سریال اندروید.
 
 - 🌐 دیپلوی: Vercel (استاتیک، بدون بیلد)
-- 📦 فایل: `/downloads/Zingo-v1.0.7.apk` نسخه 1.0.7
+- 📦 فایل: `/downloads/Zingo-v1.0.9.apk` نسخه 1.0.9
 - 🔍 سئو: تک‌صفحه فارسی RTL + بخش انگلیسی، JSON-LD (SoftwareApplication + FAQ)، sitemap، robots، OG
 
 ## دیپلوی در ورسل
