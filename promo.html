@@ -3,104 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>معرفی زینگو | موشن‌گرافی برنامه فیلم و سریال Zingo</title>
-<meta name="description" content="تیزر معرفی برنامه زینگو (Zingo) — برنامه فیلم و سریال اندروید با پخش آنلاین، زیرنویس فارسی و دانلود پرسرعت.">
+<title>تیزر زینگو | معرفی برنامه فیلم و سریال Zingo</title>
+<meta name="description" content="تیزر تبلیغاتی برنامه زینگو (Zingo) — برنامه فیلم و سریال اندروید با پخش آنلاین، زیرنویس فارسی و دانلود پرسرعت.">
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#0B0806">
+<meta name="theme-color" content="#FFF3E6">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preload" href="/assets/fonts/Pinar-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" as="image" href="/assets/logo.png" type="image/png">
+<link rel="preload" href="/assets/fonts/Pinar-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" as="image" href="/assets/screen1.jpg" type="image/jpeg">
 <link rel="stylesheet" href="/promo.css">
 </head>
 <body>
-<div class="stage" id="stage" aria-label="تیزر معرفی زینگو">
+<div class="ad" id="ad" aria-label="تیزر تبلیغاتی زینگو">
 
-  <!-- پرده شروع (برای فعال شدن صدا با یک لمس) -->
-  <div class="intro-veil" id="veil">
-    <img class="veil-logo" src="/assets/logo.png" alt="لوگوی زینگو" width="88" height="99">
-    <h1>زینگو <span>Zingo</span></h1>
-    <p>تیزر معرفی • با صدا تماشا کن 🎧</p>
-    <button class="play-btn" id="playBtn" type="button">
-      <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5.5v13l11-6.5Z"/></svg>
-      پخش تیزر
-    </button>
-    <a class="veil-link" href="/">← بازگشت به صفحه دانلود</a>
+  <!-- نوار سگمنت‌ها مثل استوری -->
+  <div class="segs" id="segs" aria-hidden="true">
+    <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
   </div>
 
-  <!-- نوار پیشرفت + کنترل‌ها -->
-  <div class="hud">
-    <div class="progress"><span id="bar"></span></div>
-    <div class="hud-row">
-      <a class="hud-home" href="/" aria-label="بازگشت">⌂</a>
-      <span class="hud-title">تیزر معرفی زینگو</span>
-      <button class="hud-btn" id="muteBtn" type="button" aria-label="قطع و وصل صدا">🔊</button>
-      <button class="hud-btn" id="skipBtn" type="button">⏩ رد شدن</button>
+  <!-- کنترل‌ها -->
+  <div class="tools">
+    <a class="tool" href="/" aria-label="بازگشت به صفحه دانلود">⌂</a>
+    <button class="tool sound-off" id="soundBtn" type="button">🔇 با صدا ببین</button>
+    <button class="tool" id="replayBtn" type="button" aria-label="پخش دوباره">↻</button>
+  </div>
+
+  <!-- صحنه اصلی: گوشی + کپشن -->
+  <main class="stage" id="stage">
+    <div class="caption" id="caption">
+      <p class="hook" id="capHook"></p>
+      <h1 id="capTitle"></h1>
+      <p class="sub" id="capSub"></p>
+      <div class="badges" id="capBadges"></div>
     </div>
-  </div>
-
-  <canvas class="fx" id="fx"></canvas>
-
-  <!-- صحنه ۱: رونمایی لوگو -->
-  <section class="scene s1" id="sc1">
-    <div class="orb"></div>
-    <img class="s1-logo" id="s1logo" src="/assets/logo.png" alt="" width="188" height="211">
-    <h2 class="kinetic" id="kTitle"><span>ز</span><span>ی</span><span>ن</span><span>گ</span><span>و</span></h2>
-    <p class="s1-tag" id="s1tag">دنیای فیلم و سریال، توی جیبته</p>
-  </section>
-
-  <!-- صحنه ۲: داخل اپ -->
-  <section class="scene s2" id="sc2">
-    <div class="phone shot">
+    <div class="phone" id="phone">
       <div class="notch"></div>
-      <img src="/assets/screen1.jpg" alt="صفحه اصلی برنامه زینگو" width="220" height="489" loading="eager">
+      <div class="screen"><img id="screenImg" src="/assets/screen1.jpg" alt="نمای برنامه زینگو" width="240" height="533" fetchpriority="high"></div>
+      <div class="taps" id="taps"></div>
+      <div class="flash" id="flash"></div>
     </div>
-    <div class="chips">
-      <p class="kicker-line">هر چی بخوای، اینجاست</p>
-      <h2>یه اپ، <span class="grad">همه فیلم و سریال‌ها</span></h2>
-      <ul>
-        <li>🎬 آرشیو به‌روز سینمایی و سریال</li>
-        <li>▶️ پخش آنلاین روان و سریع</li>
-        <li>💬 زیرنویس فارسی چسبیده</li>
-      </ul>
-    </div>
-  </section>
+  </main>
 
-  <!-- صحنه ۳: دانلود -->
-  <section class="scene s3" id="sc3">
-    <div class="chips">
-      <p class="kicker-line">دانلود بدون دردسر</p>
-      <h2>ارسال مستقیم به <span class="grad">دانلودمنیجر</span></h2>
-      <div class="badges"><span>480</span><span>720</span><span>x264</span></div>
-      <p class="muted-line">ADM و 1DM • بدون کپی لینک • قابل ادامه</p>
-    </div>
-    <div class="dl-demo">
-      <div class="phone shot small">
-        <div class="notch"></div>
-        <img src="/assets/screen2.jpg" alt="صفحه پخش و دانلود زینگو" width="220" height="489" loading="eager">
-      </div>
-      <div class="arrow">⬇</div>
-    </div>
-  </section>
-
-  <!-- صحنه ۴: آمار -->
-  <section class="scene s4" id="sc4">
-    <p class="kicker-line center">سبک، رایگان، فارسی</p>
-    <div class="stats">
-      <div><strong><span class="count" data-to="4" data-dec="1">0</span>MB</strong><span>حجم اپ</span></div>
-      <div><strong>رایگان</strong><span>بدون ثبت‌نام</span></div>
-      <div><strong><span class="count" data-to="7">0</span>+</strong><span>اندروید</span></div>
-    </div>
-  </section>
-
-  <!-- صحنه ۵: دعوت به نصب -->
-  <section class="scene s5" id="sc5">
-    <img class="s5-logo" src="/assets/logo.png" alt="لوگوی زینگو" width="120" height="135">
-    <h2>همین حالا <span class="grad">زینگو</span> رو نصب کن</h2>
-    <p class="muted-line">نسخه 1.0.7 اندروید • تست‌شده • امضای رسمی</p>
-    <a class="cta" href="/downloads/Zingo-v1.0.7.apk" download="Zingo-v1.0.7.apk">⬇ دانلود مستقیم زینگو<small>v1.0.7 • 3.9MB • APK</small></a>
+  <!-- اندکارت -->
+  <section class="endcard" id="endcard" aria-label="دانلود زینگو">
+    <img class="app-icon" src="/assets/logo.png" alt="آیکون زینگو" width="104" height="117">
+    <h2>زینگو <span>Zingo</span></h2>
+    <p class="stars" aria-label="امتیاز 4.8 از 5">★★★★★ <b>۴.۸</b></p>
+    <p class="end-sub">برنامه فیلم و سریال • رایگان • ۳.۹ مگابایت</p>
+    <a class="install" href="/downloads/Zingo-v1.0.7.apk" download="Zingo-v1.0.7.apk">نصب رایگان<small>v1.0.7 • اندروید ۷ به بالا</small></a>
     <div class="end-row">
-      <button class="ghost-btn" id="replayBtn" type="button">↻ تماشای دوباره</button>
-      <a class="ghost-btn" href="/">صفحه دانلود</a>
+      <button class="mini" id="replayBtn2" type="button">↻ دیدن دوباره تیزر</button>
+      <a class="mini" href="/">صفحه دانلود</a>
     </div>
   </section>
 
