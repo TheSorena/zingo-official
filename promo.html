@@ -3,28 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تیزر زینگو | معرفی برنامه فیلم و سریال Zingo</title>
-<meta name="description" content="تیزر تبلیغاتی برنامه زینگو (Zingo) — برنامه فیلم و سریال اندروید با پخش آنلاین، زیرنویس فارسی و دانلود پرسرعت.">
+<title>زینگو سه‌بعدی | تیزر تبلیغاتی Zingo</title>
+<meta name="description" content="تیزر تبلیغاتی سه‌بعدی زینگو (Zingo) — برنامه فیلم و سریال اندروید با پخش آنلاین، زیرنویس فارسی و دانلود پرسرعت.">
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#FFF3E6">
+<meta name="theme-color" content="#0B0806">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preload" href="/assets/fonts/Pinar-Bold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/assets/fonts/Pinar-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" as="image" href="/assets/screen1.jpg" type="image/jpeg">
+<link rel="preload" as="image" href="/assets/logo.png" type="image/png">
 <link rel="stylesheet" href="/promo.css">
 </head>
 <body>
-<div class="ad" id="ad" aria-label="تیزر تبلیغاتی زینگو">
+<div class="ad3d" id="ad" aria-label="تیزر تبلیغاتی سه‌بعدی زینگو">
 
-  <!-- لایه‌های سینمایی -->
-  <div class="bg-orbs" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
-  <div class="streaks" aria-hidden="true"><i class="s1"></i><i class="s2"></i></div>
-  <canvas class="fx" id="fx" aria-hidden="true"></canvas>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="wipe" id="wipe" aria-hidden="true"></div>
+  <!-- اتمسفر سه‌بعدی -->
+  <div class="space" aria-hidden="true">
+    <span class="nebula n1"></span><span class="nebula n2"></span><span class="nebula n3"></span>
+    <div class="grid-floor"></div>
+    <canvas class="fx" id="fx"></canvas>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </div>
 
-  <!-- نوار سگمنت‌ها مثل استوری -->
+  <!-- نوار سگمنت‌ها -->
   <div class="segs" id="segs" aria-hidden="true">
     <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
   </div>
@@ -36,43 +37,131 @@
     <button class="tool" id="replayBtn" type="button" aria-label="پخش دوباره">↻</button>
   </div>
 
-  <!-- صحنه اصلی: گوشی + کپشن -->
-  <main class="stage" id="stage">
-    <div class="caption" id="caption">
-      <p class="hook" id="capHook"></p>
-      <h1 id="capTitle"></h1>
-      <p class="sub" id="capSub"></p>
-      <div class="badges" id="capBadges"></div>
-    </div>
-    <div class="phone" id="phone">
-      <div class="notch"></div>
-      <div class="screen"><img id="screenImg" src="/assets/screen1.jpg" alt="نمای برنامه زینگو" width="240" height="533" fetchpriority="high"></div>
-      <div class="taps" id="taps"></div>
-      <div class="audiopop" id="audioPop" aria-hidden="true">
-        <p class="ap-title">🎧 ترک صوتی و زیرنویس</p>
-        <div class="ap-sub" id="apSub">Where are you going?</div>
-        <ul>
-          <li data-lang="en"><span>English</span><i>✓</i></li>
-          <li data-lang="fa"><span>فارسی</span><i>✓</i></li>
-          <li data-lang="ja"><span>日本語・ژاپنی</span><i>✓</i></li>
-        </ul>
-      </div>
-      <div class="flash" id="flash"></div>
+  <!-- صحنه اصلی -->
+  <main class="viewport" id="viewport">
+    <div class="world" id="world">
+
+      <!-- ۱: هیرو سه‌بعدی -->
+      <section class="shot shot-hero on" id="shot0">
+        <div class="layer" data-depth="30">
+          <div class="rings" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div class="layer" data-depth="70">
+          <img class="hero-logo" src="/assets/logo.png" alt="لوگوی زینگو" width="150" height="168" fetchpriority="high">
+        </div>
+        <div class="layer" data-depth="110">
+          <p class="eyebrow">تماشا رو حس کن</p>
+          <h1 class="mega3d">زینگو</h1>
+          <p class="latin3d" dir="ltr">Z I N G O</p>
+          <p class="tagline">فیلم و سریال، بدون مرز</p>
+        </div>
+        <div class="layer chips3d" data-depth="160">
+          <span class="chip f1">رایگان</span>
+          <span class="chip f2">۳.۹ مگابایت</span>
+          <span class="chip f3">زیرنویس فارسی</span>
+        </div>
+      </section>
+
+      <!-- ۲: گوشی شناور -->
+      <section class="shot shot-phone" id="shot1">
+        <div class="layer" data-depth="40">
+          <p class="eyebrow">یه اپ، همه‌چیز</p>
+          <h2 class="h3d">دنیای فیلم و سریال<br><span>توی جیبت</span></h2>
+        </div>
+        <div class="layer" data-depth="110">
+          <div class="phone3d" id="phone">
+            <div class="notch"></div>
+            <div class="screen"><img id="screenImg" src="/assets/screen1.jpg" alt="نمای برنامه زینگو" width="240" height="533" fetchpriority="high"></div>
+            <div class="taps" id="taps"></div>
+            <div class="flash" id="flash"></div>
+            <div class="phone-glow" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="layer" data-depth="180">
+          <span class="chip orbit o1">پخش آنلاین</span>
+          <span class="chip orbit o2">۴۸۰ / ۷۲۰</span>
+        </div>
+      </section>
+
+      <!-- ۳: کاورفلو -->
+      <section class="shot shot-flow" id="shot2">
+        <div class="layer" data-depth="40">
+          <p class="eyebrow">ورق بزن</p>
+          <h2 class="h3d">انتخاب کن، <span>تماشا کن</span></h2>
+          <p class="hint">بکش تا بچرخه</p>
+        </div>
+        <div class="layer" data-depth="100">
+          <div class="coverflow" id="coverflow">
+            <div class="cf-card"><img src="/assets/screen1.jpg" alt="صفحه اصلی زینگو" loading="lazy"></div>
+            <div class="cf-card"><img src="/assets/screen2.jpg" alt="پخش سریال در زینگو" loading="lazy"></div>
+            <div class="cf-card"><img src="/assets/screen1.jpg" alt="آرشیو فیلم زینگو" loading="lazy"></div>
+            <div class="cf-card"><img src="/assets/screen2.jpg" alt="زیرنویس فارسی زینگو" loading="lazy"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ۴: دموی زبان -->
+      <section class="shot shot-lang" id="shot3">
+        <div class="layer" data-depth="40">
+          <p class="eyebrow">به زبون خودت</p>
+          <h2 class="h3d">انگلیسی؟ فارسی؟ <span>ژاپنی؟</span></h2>
+        </div>
+        <div class="layer" data-depth="110">
+          <div class="phone3d mini">
+            <div class="notch"></div>
+            <div class="screen"><img src="/assets/screen2.jpg" alt="انتخاب زبان در زینگو" loading="lazy"></div>
+            <div class="audiopop show" id="audioPop" aria-hidden="true">
+              <p class="ap-title">ترک صوتی و زیرنویس</p>
+              <div class="ap-sub" id="apSub">Where are you going?</div>
+              <ul>
+                <li data-lang="en"><span>English</span><i>✓</i></li>
+                <li data-lang="fa"><span>فارسی</span><i>✓</i></li>
+                <li data-lang="ja"><span>ژاپنی</span><i>✓</i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ۵: دانلود + آمار -->
+      <section class="shot shot-dl" id="shot4">
+        <div class="layer" data-depth="40">
+          <p class="eyebrow">بدون کپی لینک</p>
+          <h2 class="h3d">دانلود <span>پرسرعت</span></h2>
+        </div>
+        <div class="layer stats3d" data-depth="110">
+          <div class="stat"><strong><span class="count" data-to="3.9" data-dec="1">۰</span></strong><span>مگابایت حجم</span></div>
+          <div class="stat"><strong>ADM</strong><span>ارسال مستقیم</span></div>
+          <div class="stat"><strong><span class="count" data-to="7">۰</span>+</strong><span>اندروید</span></div>
+        </div>
+        <div class="layer" data-depth="170">
+          <div class="dl-beam" aria-hidden="true"><span></span></div>
+        </div>
+      </section>
+
+      <!-- ۶: اندکارت -->
+      <section class="shot shot-end" id="shot5">
+        <div class="layer" data-depth="60">
+          <img class="end-logo" src="/assets/logo.png" alt="لوگوی زینگو" width="110" height="124" loading="lazy">
+        </div>
+        <div class="layer" data-depth="110">
+          <h2 class="h3d big">همین حالا <span>نصبش کن</span></h2>
+          <p class="stars" aria-label="امتیاز ۴.۸ از ۵">★★★★★ <b>۴.۸</b></p>
+        </div>
+        <div class="layer" data-depth="160">
+          <a class="cta3d" id="ctaBtn" href="/downloads/Zingo-v1.0.9.apk" download="Zingo-v1.0.9.apk">
+            <span class="cta-shine" aria-hidden="true"></span>
+            نصب رایگان<small>v1.0.9 • ۳.۹MB • APK</small>
+          </a>
+          <div class="end-row">
+            <button class="mini" id="replayBtn2" type="button">↻ دیدن دوباره</button>
+            <a class="mini" href="/">صفحه دانلود</a>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
-
-  <!-- اندکارت -->
-  <section class="endcard" id="endcard" aria-label="دانلود زینگو">
-    <img class="app-icon" src="/assets/logo.png" alt="آیکون زینگو" width="104" height="117">
-    <h2>زینگو <span>Zingo</span></h2>
-    <p class="stars" aria-label="امتیاز 4.8 از 5">★★★★★ <b>۴.۸</b></p>
-    <p class="end-sub">برنامه فیلم و سریال • رایگان • ۳.۹ مگابایت</p>
-    <a class="install" href="/downloads/Zingo-v1.0.9.apk" download="Zingo-v1.0.9.apk">نصب رایگان<small>v1.0.9 • اندروید ۷ به بالا</small></a>
-    <div class="end-row">
-      <button class="mini" id="replayBtn2" type="button">↻ دیدن دوباره تیزر</button>
-      <a class="mini" href="/">صفحه دانلود</a>
-    </div>
-  </section>
 
 </div>
 <script src="/promo.js" defer></script>
