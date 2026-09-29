@@ -1,6 +1,11 @@
 /* Zingo 3D ad — timeline, 3D parallax, coverflow, particles, sound */
 (function(){
 "use strict";
+if(/clean=1/.test(location.search)){
+  var st=document.createElement('style');
+  st.textContent='.tools,.segs,.hint,.end-row{display:none!important}';
+  document.head.appendChild(st);
+}
 var ad=document.getElementById('ad'),world=document.getElementById('world'),viewport=document.getElementById('viewport'),
 segs=[].slice.call(document.querySelectorAll('#segs i')),
 shots=[].slice.call(document.querySelectorAll('.shot')),
